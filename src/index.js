@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const Person = ({ img, name, job, children }) => {
+  const url = `https://randomuser.me/api/portraits/thumb/men/${img}.jpg`;
+  return (
+    <article className='person'>
+      <img src={url} />
+      <h4>{name}</h4>
+      <h4>{job}</h4>
+      {children}
+    </article>
+  );
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const PersonList = () => {
+  return (
+    <section class='person-list'>
+      <Person img="34" name="Narendra" job="Developer">
+        <p>"I am a Developer"</p>
+      </Person>
+      <Person img="22" name="Digvijay" job="Data Scientist"></Person>
+      <Person img="56" name="Pratik" job="Front-End Developer"></Person>
+    </section>
+  );
+};
+
+ReactDOM.render(<PersonList />, document.getElementById("root"));
